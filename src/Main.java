@@ -27,7 +27,7 @@ public class Main {
         for (int i = 0; i < temps.size(); i++)
             myArray[i] = tempsArray[i];
 
-        for (int i = 0; i < myArray.length-1; i++)
+        for (int i = 0; i < myArray.length; i++)
         {
             System.out.print(myArray[i]+" ");
             System.out.println();

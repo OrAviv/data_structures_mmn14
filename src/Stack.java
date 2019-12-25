@@ -12,7 +12,7 @@ public class Stack
     public void build_heapify_stack (double array[], int d)
     {
         this.heapSize = array.length - 1;
-        for (int i = (this.heapSize/d); i > 0; i--)
+        for (int i = (this.heapSize/d); i >= 0; i--)
             for (int j = 0; j < d; j++)
                 heapify(array, d, i);
 
@@ -20,19 +20,15 @@ public class Stack
 
     public void heapify (double array[], int d, int index)
     {
-        int first_child = d*index - (d-2);
+        int first_child = d*index + 1;
         if (first_child > this.heapSize)
             return;
-        int largest = index;
-
-        for (int child = first_child; (child < (d + first_child)) && (child <= this.heapSize); child++)
-        {
-            if (array[child] > array[index])
-            {
-                largest = child;
-                break;
-            }
-        }
+        int largest = first_child;
+        for (int i = first_child; (i < first_child+d) && (i <= this.heapSize); i++)
+            if (array[i] > array[largest])
+                largest = i;
+        if (array[largest] <= array[index])
+            largest = index;
         if (largest != index)
         {
             double temp = array[index];
