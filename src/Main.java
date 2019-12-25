@@ -27,14 +27,9 @@ public class Main {
         for (int i = 0; i < temps.size(); i++)
             myArray[i] = tempsArray[i];
 
-        for (int i = 0; i < myArray.length; i++)
-        {
-            System.out.print(myArray[i]+" ");
-            System.out.println();
-        }
         Stack myStack = new Stack(myArray ,d);
-//        myStack.extract_max(myArray, d);
-//        myStack.insert(myArray, d, 10);
+        System.out.println(myStack.extract_max(myArray, d));
+        myStack.insert(myArray, d, 19);
         myStack.print_array(myArray, d);
     }
 }

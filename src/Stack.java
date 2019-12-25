@@ -46,10 +46,10 @@ public class Stack
             return Integer.MIN_VALUE;
         }
 
-        double max = array[1];
-        array[1] = array[this.heapSize];
+        double max = array[0];
+        array[0] = array[this.heapSize];
         this.heapSize -= 1;
-        heapify(array, d,1);
+        heapify(array, d,0);
         return max;
     }
 
@@ -58,10 +58,17 @@ public class Stack
         this.heapSize += 1;
         array[this.heapSize] = item;
         int parent;
+        int parent_zero_count = 0;
         double temp;
-        for (int index = this.heapSize; index > 0; index /= d)
+        for (int index = this.heapSize; index >= 0; index /= d)
         {
             parent = this.get_parent(index, d);
+            if (parent == 0)
+            {
+                if (parent_zero_count > 0)
+                    return;
+                parent_zero_count++;
+            }
             if (array[index] > array[parent])
             {
                 temp = array[parent];
@@ -87,14 +94,8 @@ public class Stack
 
     public void print_array(double array[], int d)
     {
-        int multi=1;
         for (int i= 0; i < array.length -1; i++)
         {
-            if ((i+1)%multi ==0)
-            {
-                System.out.println();
-                multi = d*multi;
-            }
             System.out.print(array[i]+"  ");
         }
     }
