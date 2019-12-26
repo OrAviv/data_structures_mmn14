@@ -78,6 +78,33 @@ public class Stack
         }
     }
 
+    public void increase_key(double array[], int d, int i, int key)
+    {
+        int parent_zero_count = 0;
+        if (key < array[i])
+        {
+            System.out.println("ERROR! new key is smaller than current one.");
+            return;
+        }
+        array[i] = key;
+        int parent = get_parent(i,d);
+        double temp;
+        while (i >= 0 && array[parent] < array[i])
+        {
+            if (i==0)
+            {
+                if (parent_zero_count > 0)
+                    return;
+                parent_zero_count++;
+            }
+
+            temp = array[parent];
+            array[parent] = array[i];
+            array[i] = temp;
+
+        }
+    }
+
     public int get_parent (int index, int d)
     {
         if (d == 0)
